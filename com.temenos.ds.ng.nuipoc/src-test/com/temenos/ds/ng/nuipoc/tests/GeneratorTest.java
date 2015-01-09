@@ -20,7 +20,7 @@ import org.junit.runner.RunWith;
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
 import com.google.inject.Inject;
-import com.temenos.ds.ng.nuipoc.Generator;
+import com.temenos.ds.ng.nuipoc.FormHTMLGenerator;
 
 @RunWith(XtextRunner.class)
 @InjectWith(EFactoryInjectorProvider.class)
@@ -31,7 +31,7 @@ public class GeneratorTest {
 	
 	@Test public void testGeneratingHTML() throws Exception {
 		Form form = loadESON("input-contact-form.eson", Form.class);
-		Generator routesGenerator = new Generator();
+		FormHTMLGenerator routesGenerator = new FormHTMLGenerator();
 		String gen = routesGenerator.html(form).toString();
 		String expected = getResourceAsString("output-expected-form.html");
 		assertEquals(expected, gen);

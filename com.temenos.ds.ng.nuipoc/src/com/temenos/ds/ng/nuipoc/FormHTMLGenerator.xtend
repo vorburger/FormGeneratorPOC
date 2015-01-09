@@ -2,7 +2,7 @@ package com.temenos.ds.ng.nuipoc
 
 import nui.Form
 
-class Generator {
+class FormHTMLGenerator {
 
 	def html(Form form) '''
 		<html>« /* Comment in Template (only) */ »
