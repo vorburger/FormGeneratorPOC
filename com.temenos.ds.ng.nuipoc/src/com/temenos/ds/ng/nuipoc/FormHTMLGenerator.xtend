@@ -5,14 +5,21 @@ import nui.Form
 class FormHTMLGenerator {
 
 	def html(Form form) '''
-		<html>« /* Comment in Template (only) */ »
-		<!-- GENERATED FILE - do NOT edit by hand (instead adapt the template in the Generator) -->
-
+<!doctype html>
+<!-- GENERATED FILE - do NOT edit by hand (instead adapt the template in the Generator) -->
+<head>
+	« /* This is a comment in the Template (only) */ »
+	« /* TODO HTML head section */ »
+</head>
+<body>
 		<h1>«form.name»</h1>
-		
-	    «FOR field : form.fields»
-* «field.name»
-	    «ENDFOR»
-	'''
+
+<ul>    «FOR field : form.fields»
+	<li>«field.label»: 
+        «ENDFOR»
+</ul>
+
+</body>
+</html>'''
 
 }
