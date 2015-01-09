@@ -1,7 +1,5 @@
 
-* form.html
-
-* src-test
+* src-test GeneratorTest
 
 * Generator.xtend for real
 
