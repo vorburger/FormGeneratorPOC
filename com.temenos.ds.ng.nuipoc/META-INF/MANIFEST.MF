@@ -11,6 +11,7 @@ Export-Package: nui,
  nui.impl,
  nui.util
 Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.core.resources,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.xtext.xbase.lib,
  org.eclipse.emf.ecore.xcore.lib,
@@ -19,5 +20,6 @@ Require-Bundle: org.eclipse.core.runtime,
  com.google.inject;bundle-version="3.0.0",
  org.eclipse.emf.eson;bundle-version="0.10.0",
  org.eclipse.xtext.common.types,
- org.eclipse.xtext.xbase
+ org.eclipse.xtext.xbase,
+ com.temenos.ds.op.xtext.ui;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy

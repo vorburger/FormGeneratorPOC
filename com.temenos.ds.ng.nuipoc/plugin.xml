@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
-
-<!--
--->
-
 <plugin>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
@@ -13,5 +9,27 @@
             class="nui.NuiPackage"
             genModel="model/nui.xcore"/>
    </extension>
+
+   <extension
+         point="com.temenos.ds.op.xtext.ui.multigenerator">
+      <multigenerator
+            class="com.temenos.ds.ng.nuipoc.Generator"
+            id="com.temenos.ds.op.xtext.generator.tests.TestMultiGeneratorID"> <!-- For the test, don't make this the same as the class name -->
+      </multigenerator>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.propertyPages">
+	  <page
+	    	category="com.temenos.ds.op.xtext.ui.BuilderGenerate"
+	        class="com.temenos.ds.op.xtext.ui.internal.NODslExecutableExtensionFactory:com.temenos.ds.op.xtext.generator.ui.MultiGeneratorBuilderPreferencePage"
+	        id="com.temenos.ds.op.xtext.generator.tests.TestMultiGenerator"
+	        name="MultiGeneratorTestCompiler">
+	        <enabledWhen>
+	            <adapt type="org.eclipse.core.resources.IProject"/>
+			</enabledWhen>
+	        <filter name="projectNature" value="org.eclipse.xtext.ui.shared.xtextNature"/>
+	  </page>
+	</extension>
 
 </plugin>
