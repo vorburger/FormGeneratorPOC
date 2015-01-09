@@ -14,7 +14,6 @@ import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
 import org.eclipse.xtext.junit4.util.ParseHelper;
 import org.eclipse.xtext.junit4.validation.ValidationTestHelper;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -31,16 +30,20 @@ public class GeneratorTest {
 	@Inject ValidationTestHelper validationTestHelper;
 	
 	@Test public void testGeneratingHTML() throws Exception {
-		NuiPackage.eINSTANCE.toString();
-		String eson = getResourceAsString("input-contact-form.eson");
-		EObject root = parseHelper.parse(eson);
-		validationTestHelper.assertNoErrors(root);
-		Form form = EFactoryResource.getEFactoryEObject(root.eResource(), Form.class);
+		Form form = loadESON("input-contact-form.eson", Form.class);
 		Generator routesGenerator = new Generator();
 		String gen = routesGenerator.html(form).toString();
 		String expected = getResourceAsString("output-expected-form.html");
 		assertEquals(expected, gen);
 		// TODO assert its valid HTML by running it through a Java HTML parser such as http://jsoup.org
+	}
+
+	private <T> T loadESON(String modelResourceName, Class<T> modelClass) throws IOException, Exception {
+		NuiPackage.eINSTANCE.toString();
+		String eson = getResourceAsString(modelResourceName);
+		EObject model = parseHelper.parse(eson);
+		validationTestHelper.assertNoErrors(model);
+		return EFactoryResource.getEFactoryEObject(model.eResource(), modelClass);
 	}
 	
 	private String getResourceAsString(String resourceName) throws IOException {
