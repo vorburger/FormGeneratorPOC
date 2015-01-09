@@ -1,5 +1,7 @@
 package com.temenos.ds.ng.nuipoc.tests;
 
+import static org.junit.Assert.*;
+
 import java.io.IOException;
 import java.net.URL;
 
@@ -30,23 +32,15 @@ public class GeneratorTest {
 	
 	@Test public void testGeneratingHTML() throws Exception {
 		NuiPackage.eINSTANCE.toString();
-		CharSequence eson = getResourceAsString("router-states.eson");
+		String eson = getResourceAsString("input-contact-form.eson");
 		EObject root = parseHelper.parse(eson);
 		validationTestHelper.assertNoErrors(root);
 		Form form = EFactoryResource.getEFactoryEObject(root.eResource(), Form.class);
 		Generator routesGenerator = new Generator();
-		CharSequence genJS = routesGenerator.html(form);
-		CharSequence expectedJS = getResourceAsString("routes.js");
-		assertEquals(expectedJS, genJS);
+		String gen = routesGenerator.html(form).toString();
+		String expected = getResourceAsString("output-expected-form.html");
+		assertEquals(expected, gen);
 		// TODO assert its valid HTML by running it through a Java HTML parser such as http://jsoup.org
-	}
-	
-	/**
-	 * @see https://github.com/junit-team/junit/pull/949/
-	 */
-	protected void assertEquals(CharSequence expected, CharSequence actual) {
-		// TODO trim() each line..
-		Assert.assertEquals(expected.toString().trim(), actual.toString().trim());
 	}
 	
 	private String getResourceAsString(String resourceName) throws IOException {
