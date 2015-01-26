@@ -6,7 +6,7 @@ Bundle-Version: 0.1.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: nui,
  nui.impl,
  nui.util
@@ -22,4 +22,5 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.xtext.common.types,
  org.eclipse.xtext.xbase,
  com.temenos.ds.op.xtext.ui;bundle-version="1.0.0"
+Eclipse-LazyStart: true
 Bundle-ActivationPolicy: lazy
