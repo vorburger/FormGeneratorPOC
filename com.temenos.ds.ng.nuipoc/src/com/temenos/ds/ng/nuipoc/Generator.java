@@ -16,13 +16,17 @@ public class Generator implements IGenerator {
 
 	@Override
 	public void doGenerate(Resource input, IFileSystemAccess fsa) {
+		// TODO How could this be made more.. "automatic" (implicit in API)
+		Form form = EFactoryResource.getEFactoryEObject(input, Form.class);
+		if (form == null)
+			return;
+
 		URI uri = input.getURI();
 		URI relativeInputURI = getRelativePath(uri);
 		URI relativeOutputURI = relativeInputURI.trimFileExtension().appendFileExtension("html"); // TODO let the called generator determine the file extension
 		String outputFileName = relativeOutputURI.path();
 		
 		FormHTMLGenerator generator = new FormHTMLGenerator();
-		Form form = EFactoryResource.getEFactoryEObject(input, Form.class);
 		CharSequence outputText = generator.html(form);
 		
 		fsa.generateFile(outputFileName, outputText);
