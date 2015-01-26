@@ -5,6 +5,7 @@ import java.util.List;
 import nui.Form;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.eson.resource.EFactoryResource;
 import org.eclipse.xtext.generator.IFileSystemAccess;
@@ -16,11 +17,14 @@ public class Generator implements IGenerator {
 
 	@Override
 	public void doGenerate(Resource input, IFileSystemAccess fsa) {
-		// TODO How could this be made more.. "automatic" (implicit in API)
-		Form form = EFactoryResource.getEFactoryEObject(input, Form.class);
-		if (form == null)
+		// TODO Make this block more.. "automatic" (build a Helper for this - in ESON)
+		if (!(input instanceof EFactoryResource))
 			return;
-
+		EObject rootEObject = EFactoryResource.getEFactoryEObject(input); // do NOT use getEFactoryEObject(input, Form.class) variant - as it may wel not be a Form
+		if (rootEObject == null)
+			return;
+		Form form = (Form) rootEObject;
+		
 		URI uri = input.getURI();
 		URI relativeInputURI = getRelativePath(uri);
 		URI relativeOutputURI = relativeInputURI.trimFileExtension().appendFileExtension("html"); // TODO let the called generator determine the file extension
