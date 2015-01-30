@@ -20,20 +20,12 @@ public class Generator implements IGenerator {
 		// TODO Make this block more.. "automatic" (build a Helper for this - in ESON)
 		if (!(input instanceof EFactoryResource))
 			return;
-		EObject rootEObject = EFactoryResource.getEFactoryEObject(input); // do NOT use getEFactoryEObject(input, Form.class) variant - as it may wel not be a Form
+		EObject rootEObject = EFactoryResource.getEFactoryEObject(input); // do NOT use getEFactoryEObject(input, Form.class) variant - as it may well not be a Form
 		if (rootEObject == null)
 			return;
 		Form form = (Form) rootEObject;
 		
 		URI uri = input.getURI();
-		if (!"eson".equals(uri.fileExtension()))
-			return;
-		EObject root = EFactoryResource.getEFactoryEObject(input);
-		if (!(root instanceof Form)) {
-			return;
-		}
-		Form form = (Form) root;
-		
 		URI relativeInputURI = getRelativePath(uri);
 		URI relativeOutputURI = relativeInputURI.trimFileExtension().appendFileExtension("html"); // TODO let the called generator determine the file extension
 		String outputFileName = relativeOutputURI.path();
