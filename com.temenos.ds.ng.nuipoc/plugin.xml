@@ -14,7 +14,7 @@
          point="com.temenos.ds.op.xtext.ui.multigenerator">
       <multigenerator
             class="com.temenos.ds.ng.nuipoc.Generator"
-            id="com.temenos.ds.op.xtext.generator.tests.TestMultiGeneratorID"> <!-- For the test, don't make this the same as the class name -->
+            id="com.temenos.ds.ng.nuipoc.GeneratorID">
       </multigenerator>
    </extension>
    
@@ -23,7 +23,7 @@
 	  <page
 	    	category="com.temenos.ds.op.xtext.ui.BuilderGenerate"
 	        class="com.temenos.ds.op.xtext.ui.internal.NODslExecutableExtensionFactory:com.temenos.ds.op.xtext.generator.ui.MultiGeneratorBuilderPreferencePage"
-	        id="com.temenos.ds.op.xtext.generator.tests.TestMultiGenerator"
+	        id="com.temenos.ds.ng.nuipoc.GeneratorID"
 	        name="MultiGeneratorTestCompiler">
 	        <enabledWhen>
 	            <adapt type="org.eclipse.core.resources.IProject"/>
