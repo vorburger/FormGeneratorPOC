@@ -26,6 +26,14 @@ public class Generator implements IGenerator {
 		Form form = (Form) rootEObject;
 		
 		URI uri = input.getURI();
+		if (!"eson".equals(uri.fileExtension()))
+			return;
+		EObject root = EFactoryResource.getEFactoryEObject(input);
+		if (!(root instanceof Form)) {
+			return;
+		}
+		Form form = (Form) root;
+		
 		URI relativeInputURI = getRelativePath(uri);
 		URI relativeOutputURI = relativeInputURI.trimFileExtension().appendFileExtension("html"); // TODO let the called generator determine the file extension
 		String outputFileName = relativeOutputURI.path();
