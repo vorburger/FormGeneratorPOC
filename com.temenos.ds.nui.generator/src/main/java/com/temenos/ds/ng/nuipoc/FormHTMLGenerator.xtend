@@ -1,6 +1,6 @@
 package com.temenos.ds.ng.nuipoc
 
-import nui.Form
+import nui2.Form
 
 class FormHTMLGenerator {
 

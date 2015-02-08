@@ -1,0 +1,32 @@
+// TODO package com.temenos.ds.ng.nui - doesn't work yet due to a limitation/bug in ESON 
+package nui2
+
+class Form {
+	String name // ID
+	String titleLabel
+	contains Field[] fields
+}
+
+class Field {
+	String name // ID
+	String label
+	String model
+	FormFieldType ftype
+	boolean required
+	contains FormFieldPrefix prefix
+}
+
+enum FormFieldType {
+	text, email, number
+}
+
+abstract class FormFieldPrefix {
+}
+
+class FormFieldPrefixGlyphIcon extends FormFieldPrefix {
+	GlyphIcon glyphicon
+}
+
+enum GlyphIcon {
+	envelope, home, edit // TODO list all available glyphicons
+}

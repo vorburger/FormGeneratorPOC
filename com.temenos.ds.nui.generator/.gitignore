@@ -1,1 +1,5 @@
 /target/
+/src-gen/
+xtend-gen/
+*._trace
+*.xtendbin
