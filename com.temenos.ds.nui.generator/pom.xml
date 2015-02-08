@@ -35,10 +35,9 @@
 			<artifactId>org.eclipse.xtext</artifactId>
 			<version>${xtext.version}</version>
 			<exclusions>
+<!--
 				<exclusion>
-					<artifactId>
-						org.eclipse.xtext.dependencies
-					</artifactId>
+					<artifactId>org.eclipse.xtext.dependencies</artifactId>
 					<groupId>org.eclipse.xtext</groupId>
 				</exclusion>
 				<exclusion>
@@ -50,20 +49,26 @@
 					<groupId>com.google.inject</groupId>
 				</exclusion>
 				<exclusion>
-					<artifactId>log4j</artifactId>
-					<groupId>log4j</groupId>
-				</exclusion>
-				<exclusion>
 					<artifactId>antlr-runtime</artifactId>
 					<groupId>org.antlr</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>log4j</artifactId>
+					<groupId>log4j</groupId>
 				</exclusion>
 				<exclusion>
 					<artifactId>org.eclipse.emf.ecore.xmi</artifactId>
 					<groupId>org.eclipse.emf</groupId>
 				</exclusion>
+-->
 			</exclusions>
 		</dependency>
-
+		<dependency>
+			<groupId>org.eclipse.xtext</groupId>
+			<artifactId>org.eclipse.xtext.common.types</artifactId>
+			<version>${xtext.version}</version>
+		</dependency>
+			
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
